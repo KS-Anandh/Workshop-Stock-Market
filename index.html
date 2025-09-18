@@ -2,408 +2,246 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ExpressSpark — Stock Market Workshop | Srikakulam — 21 Sep 2025</title>
-  <meta name="description" content="Beginner-friendly 3-hour stock market workshop in Srikakulam by ExpressSpark. Practical charts, live demo, NISM-certified mentors." />
-  <meta name="theme-color" content="#ff6a00" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Stock Market Workshop — ExpressSpark | Srikakulam</title>
+  <meta name="description" content="Professional, beginner-friendly Stock Market Workshop in Srikakulam on 21 Sep 2025. NISM certified mentors, hands-on trading setups, practical modules. Register via WhatsApp, Call or Razorpay." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
   <style>
-    /* ---------- Design tokens ---------- */
     :root{
-      --bg:#ffffff;
-      --text:#0b1320;
+      --accent:#0b5ed7; /* primary blue */
+      --accent-2:#7c3aed; /* secondary purple */
+      --accent-3:#f59e0b; /* highlight amber */
       --muted:#6b7280;
-      --accent:#ff6a00;
-      --accent-2:#ff8a3d;
       --card:#ffffff;
-      --glass: rgba(11,19,32,0.04);
-      --radius:14px;
-      --shadow-lg: 0 18px 45px rgba(11,19,32,0.06);
-      --maxWidth:1200px;
-      --gap:18px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);background:linear-gradient(180deg,#fff 0%, #fff 100%);-webkit-font-smoothing:antialiased}
-    a{color:inherit}
-    .container{max-width:var(--maxWidth);margin:0 auto;padding:22px}
-    /* ---------- Header ---------- */
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:56px;height:56;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 8px 24px rgba(255,106,0,0.12)}
-    .brand-title{font-weight:800;font-size:18px}
-    .brand-sub{font-size:13px;color:var(--muted);margin-top:2px}
-    .contact-inline{display:flex;gap:10px;align-items:center;white-space:nowrap}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;text-decoration:none;border:none;font-weight:700;cursor:pointer;box-shadow:0 8px 26px rgba(255,106,0,0.12)}
-    .btn.secondary{background:transparent;border:1px solid var(--glass);color:var(--text);font-weight:700}
-    .small{font-size:13px}
-    /* ---------- Hero / layout ---------- */
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start;margin-top:8px}
-    .card{background:var(--card);border-radius:var(--radius);padding:18px;border:1px solid var(--glass);box-shadow:var(--shadow-lg)}
-    h1{font-size:28px;margin:0 0 8px;line-height:1.02}
-    p.lead{margin:0 0 12px;color:var(--muted);font-weight:600}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    /* modules grid */
-    .modules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
-    .module{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,138,61,0.03), transparent);border:1px solid rgba(255,138,61,0.06);transform:translateY(20px);opacity:0;transition:transform 520ms cubic-bezier(.2,.9,.2,1),opacity 520ms ease}
-    .module.visible{transform:none;opacity:1;box-shadow:0 16px 36px rgba(14,30,40,0.06)}
-    .module h4{margin:0 0 6px}
-    .meta{color:var(--muted);font-size:13px;font-weight:700}
-    /* mentors */
-    .mentors{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-    .mentor{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(11,19,32,0.02), transparent);border:1px solid var(--glass)}
-    .avatar{width:56px;height:56;border-radius:8px;background:linear-gradient(180deg,#fff, #eee);display:flex;align-items:center;justify-content:center;color:var(--text);font-weight:800}
-    /* aside */
-    .aside-stick{position:sticky;top:18px;align-self:start}
-    .map-wrap{border-radius:10px;overflow:hidden;border:1px solid var(--glass);margin-top:10px}
-    .map-iframe{width:100%;height:260px;border:0;display:block}
-    /* register form */
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
-    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(11,19,32,0.06);background:transparent;color:var(--text);font-weight:700}
-    textarea{min-height:90px}
-    footer{margin-top:26px;padding-top:14px;border-top:1px solid rgba(11,19,32,0.04);color:var(--muted);font-weight:700}
-    /* Razorpay button styling to match theme */
-    .razorpay-payment-button{
-      display:inline-flex !important;
-      align-items:center !important;
-      justify-content:center !important;
-      gap:8px !important;
-      padding:10px 14px !important;
-      border-radius:10px !important;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2)) !important;
-      color:#fff !important;
-      border:none !important;
-      font-weight:800 !important;
-      cursor:pointer !important;
-      box-shadow:0 10px 30px rgba(255,106,0,0.12) !important;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial !important;
-    }
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .modules{grid-template-columns:1fr}
-      .aside-stick{position:static;margin-top:12px}
-    }
-    @media (max-width:520px){
-      .btn{width:100%;justify-content:center}
-      .contact-inline a.btn{width:auto}
-      .form-grid{grid-template-columns:1fr}
-      .map-iframe{height:220px}
+      --radius:12px;
+      --glass: rgba(255,255,255,0.6);
     }
 
-    /* subtle entry animations for hero elements */
-    .hero-intro{opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.2,1)}
-    .hero-intro.visible{opacity:1;transform:none}
-    /* hover lifts for cards */
-    .card:hover{transform:translateY(-6px);transition:transform .28s cubic-bezier(.2,.9,.2,1);box-shadow:0 22px 50px rgba(11,19,32,0.08)}
-    /* CTA sticky on mobile bottom */
-    @media (max-width:520px){
-      .mobile-cta{position:fixed;left:14px;right:14px;bottom:14px;z-index:60;display:block}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#0f1724;background:linear-gradient(180deg,#f7fbff 0%, #f8fafc 60%);-webkit-font-smoothing:antialiased}
+
+    .container{max-width:1100px;margin:18px auto;padding:18px}
+    header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;flex:1 1 auto}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;letter-spacing:0.6px}
+    h1{font-size:1.35rem}
+    .tag{color:var(--muted);font-size:0.95rem}
+
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:18px}
+    .card{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 8px 20px rgba(11,94,215,0.04);transition:transform 200ms ease,box-shadow 200ms ease;will-change:transform}
+    .card:hover{transform:translateY(-6px);box-shadow:0 22px 40px rgba(11,94,215,0.06)}
+
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;font-weight:700;font-size:0.85rem}
+    .price{font-size:1.5rem;font-weight:800}
+    .muted{color:var(--muted)}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;box-shadow:0 8px 18px rgba(124,58,237,0.08)}
+    .btn-outline{background:transparent;border:1px solid rgba(11,94,215,0.08);color:var(--accent)}
+    .contact-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:700}
+    .whatsapp{background:linear-gradient(90deg,#25D366,#16a34a);color:white}
+    .call{background:linear-gradient(90deg,var(--accent-3),#10b981);color:white}
+
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+    .module{padding:14px;border-radius:10px;border:1px solid #eef3fb;background:linear-gradient(180deg,#ffffff,#fbfdff);transition:transform 180ms ease,box-shadow 180ms ease}
+    .module:hover{transform:translateY(-6px);box-shadow:0 14px 26px rgba(15,23,36,0.06)}
+
+    .highlight{display:flex;gap:8px;align-items:flex-start;margin-top:10px}
+    .badge{background:linear-gradient(90deg,var(--accent-3),#f97316);color:white;padding:6px 8px;border-radius:8px;font-weight:700}
+
+    .footer{margin-top:22px;font-size:0.9rem;color:var(--muted);text-align:center}
+    .small{font-size:0.9rem}
+    iframe{width:100%;border:0;border-radius:12px;min-height:220px}
+
+    /* subtle entrance */
+    .fade-in{animation:fadeIn 560ms ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+    /* animated underline for links */
+    a.underline{position:relative;color:var(--accent);text-decoration:none}
+    a.underline:after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width 220ms ease}
+    a.underline:hover:after{width:100%}
+
+    /* accessible motion preference */
+    @media (prefers-reduced-motion: reduce){
+      .fade-in,.card,.module{animation:none;transition:none}
+    }
+
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr}
+      .module-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+    @media (max-width:480px){
+      h1{font-size:1.15rem}
+      .price{font-size:1.2rem}
+      .btn,.contact-btn{flex:1 1 auto;justify-content:center}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
+  <div class="container fade-in">
     <header>
       <div class="brand">
-        <div class="logo" aria-hidden="true">ES</div>
+        <div class="logo" aria-hidden>ES</div>
         <div>
-          <div class="brand-title">ExpressSpark — StockStart Srikakulam</div>
-          <div class="brand-sub">Hands-on beginner stock market workshop — 21 Sep 2025</div>
+          <h1>Stock Market Workshop</h1>
+          <div class="tag">Organized by <strong>ExpressSpark</strong> — Professional · Practical · Hands-on</div>
         </div>
       </div>
-
-      <div class="contact-inline" aria-label="Contact actions">
-        <!-- Call button: tel link + fallback -->
-        <a class="btn secondary" href="tel:+919346813383" onclick="window.location.href='tel:+919346813383';" title="Call +91 93468 13383">Call: +91 93468 13383</a>
-
-        <!-- WhatsApp link: open in new tab; fallback if popup blocked -->
-        <a class="btn" id="waTop" href="https://wa.me/919346813383?text=I%20want%20to%20register%20for%20ExpressSpark%20workshop%20on%2021%20Sep%202025" target="_blank" rel="noopener noreferrer"
-           onclick="try{window.open(this.href,'_blank');}catch(e){location.href=this.href;}return false;">WhatsApp</a>
-      </div>
+      <div class="pill" aria-label="Event date and time">Sunday, 21 Sep 2025 · 10:00 AM – 1:00 PM</div>
     </header>
 
-    <!-- Main hero + aside -->
-    <main>
-      <section class="hero">
-        <!-- LEFT: main content -->
-        <div>
-          <div class="card hero-intro" id="heroCard">
-            <h1>Beginner stock market workshop — Srikakulam (3 hours)</h1>
-            <p class="lead">Sunday, 21st September 2025 — Plot No: 83, PN Colony, Srikakulam. Practical & interactive — learn how markets work, read charts and get started confidently. Fee: ₹109 (refreshments included).</p>
-
-            <div class="actions" aria-hidden="false">
-              <!-- PRIMARY RAZORPAY BUTTON HERE (exact script you provided). This is the main enroll action. -->
-              <div id="razorpay-host-hero" aria-hidden="false" style="display:inline-block">
-                <form>
-                  <script src="https://checkout.razorpay.com/v1/payment-button.js"
-                          data-payment_button_id="pl_RIMmfRfJz3imDg" async> </script>
-                </form>
-              </div>
-
-              <!-- If the Razorpay button fails to render, JS will show this fallback -->
-              <a id="fallbackHero" class="btn" href="#" style="background:#e65b00;display:none" onclick="event.preventDefault(); openWhatsApp('I want to register and pay ₹109 for ExpressSpark workshop on 21 Sep 2025. Name:');">Pay / Register via WhatsApp</a>
-
-              <a class="btn secondary" href="#modules">Modules &amp; schedule</a>
-            </div>
-
-            <div style="margin-top:18px">
-              <div style="font-weight:800;margin-bottom:8px">Why attend</div>
-              <ul style="margin:6px 0 0 18px;color:var(--muted)">
-                <li>Clear, practical steps for absolute beginners — understand accounts, charts and orders.</li>
-                <li>Live demo on trading platforms (paper orders) and candlestick basics.</li>
-                <li>Digital cheat-sheet, checklist and a certificate of participation.</li>
-              </ul>
-            </div>
-
-            <!-- Modules with animated reveal -->
-            <div class="modules" id="modules" aria-live="polite">
-              <div class="module"><h4>1. What is money & why invest?</h4><div class="meta">Goals, inflation and compounding made simple.</div></div>
-              <div class="module"><h4>2. Indian financial ecosystem</h4><div class="meta">Roles of SEBI, NSE, BSE & RBI.</div></div>
-              <div class="module"><h4>3. Basics of stocks, IPOs & listings</h4><div class="meta">Stocks, IPO lifecycle and listing essentials.</div></div>
-              <div class="module"><h4>4. How prices change</h4><div class="meta">Supply, demand, news & market sentiment.</div></div>
-              <div class="module"><h4>5. Brokers, Demat & trading accounts</h4><div class="meta">How to open accounts & choose a broker.</div></div>
-              <div class="module"><h4>6. Market basics</h4><div class="meta">Order types, market timings & settlement basics.</div></div>
-              <div class="module"><h4>7. First look at trading platforms & charts</h4><div class="meta">Hands-on charts, mock orders and first indicators.</div></div>
-            </div>
-
-            <!-- Mentors highlighted -->
-            <div style="margin-top:18px">
-              <div style="font-weight:800;margin-bottom:8px">Mentors</div>
-              <div class="mentors" aria-label="Mentor highlights">
-                <div class="mentor" role="group" aria-label="Mentor: Experienced NISM certified mentor">
-                  <div class="avatar">ES</div>
-                  <div>
-                    <div style="font-weight:800">Experienced mentors — NISM certified</div>
-                    <div class="meta">Mentors have practical market experience.</div>
-                  </div>
-                </div>
-
-                <div class="mentor">
-                  <div class="avatar">—</div>
-                  <div>
-                    <div style="font-weight:800">Batch support & follow-up</div>
-                    <div class="meta">Post-workshop learners group to practice and network locally in Srikakulam.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- RIGHT: aside with map and quick actions -->
-        <aside class="aside-stick" aria-label="Event snapshot">
-          <div class="card">
-            <div style="font-weight:800;font-size:16px;margin-bottom:8px">Event snapshot</div>
-            <div class="meta">Date: Sunday, 21 Sep 2025</div>
-            <div class="meta">Time: 10:00 AM – 1:00 PM</div>
-            <div class="meta">Venue: Plot No: 83, PN Colony, Srikakulam</div>
-
-            <div style="margin-top:12px;font-weight:800;font-size:18px;color:var(--accent)">Fee: ₹109</div>
-
-            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-              <a class="btn" href="#register-form">Register</a>
-              <a class="btn secondary" href="tel:+919346813383" onclick="window.location.href='tel:+919346813383';">Call</a>
-              <a class="btn secondary" href="https://wa.me/919346813383?text=Book%20slot%20for%20ExpressSpark%20Srikakulam%20workshop" onclick="try{window.open(this.href,'_blank');}catch(e){location.href=this.href;}return false;">WhatsApp</a>
-            </div>
-
-            <div style="margin-top:12px;font-weight:800;margin-bottom:8px">Venue</div>
-            <div class="map-wrap">
-              <!-- Google Maps embed using a place query; works without API key -->
-              <iframe class="map-iframe" loading="lazy"
-                src="https://www.google.com/maps?q=Plot%20No%2083%20PN%20Colony%20Srikakulam&output=embed"
-                referrerpolicy="no-referrer-when-downgrade"
-                title="Map to Plot No 83 PN Colony Srikakulam"></iframe>
-            </div>
-
-            
-          </div>
-        </aside>
-      </section>
-
-      <!-- Registration form area -->
-      <section style="margin-top:18px">
-        <div class="card" id="register-form">
-          <h2 style="margin:0 0 10px">Register — quick form</h2>
-
-          <form id="regForm" onsubmit="return false">
-            <div class="form-grid">
-              <label style="display:block;font-weight:700">Full name
-                <input id="name" name="name" placeholder="Full name" required />
-              </label>
-              <label style="display:block;font-weight:700">Phone (WhatsApp)
-                <input id="phone" name="phone" placeholder="+91 9xxxxxxxxx" required />
-              </label>
-            </div>
-
-            <label style="display:block;margin-top:10px;font-weight:700">Any prior exposure? (optional)
-              <textarea id="note" name="note" placeholder="Optional"></textarea>
-            </label>
-
-            <div style="display:flex;gap:10px;margin-top:12px;align-items:center;flex-wrap:wrap">
-              <button id="formSubmit" class="btn" type="button">Submit &amp; open WhatsApp</button>
-
-              <!-- Render Razorpay payment-button again in form area so users can pay here if they scrolled -->
-              <div id="razorpay-host-form" aria-hidden="false" style="display:inline-block">
-                <form>
-                  <script src="https://checkout.razorpay.com/v1/payment-button.js"
-                          data-payment_button_id="pl_RIMmfRfJz3imDg" async> </script>
-                </form>
-              </div>
-
-              <!-- fallback if Razorpay script is blocked -->
-              <a id="fallbackForm" class="btn" href="#" style="background:#e65b00;display:none" onclick="event.preventDefault(); openWhatsApp('I want to register and pay ₹109 for ExpressSpark workshop on 21 Sep 2025. Name:');">Pay / Register via WhatsApp</a>
-            </div>
-
-            <div id="formMsg" class="muted-note" style="margin-top:10px"></div>
-          </form>
-        </div>
-      </section>
-
-      <!-- Organizer -->
-      <section style="margin-top:18px">
+    <main class="hero">
+      <section>
         <div class="card">
-          <h3 style="margin:0 0 8px">Organizer</h3>
-          <div class="meta">ExpressSpark — Learn. Network. Grow.</div>
-          <div class="meta" style="margin-top:8px">For registrations & enquiries: +91 93468 13383 (Call / WhatsApp)</div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+            <div>
+              <div class="muted">Venue</div>
+              <strong>ExpressSpark Learning Center<br>Plot No: 83, PN Colony, Srikakulam</strong>
+            </div>
+            <div style="text-align:right">
+              <div class="muted">Fee</div>
+              <div class="price">₹109 <span class="small muted">(includes refreshments)</span></div>
+            </div>
+          </div>
+
+          <hr style="margin:14px 0;border:none;border-top:1px solid #eef2f5">
+
+          <h2 style="margin:0 0 8px 0">Overview</h2>
+          <p class="small muted">A concise, beginner-friendly workshop focused on building foundational market knowledge and practical trading readiness. Delivered by NISM-certified mentors with live trading demonstrations at our ExpressSpark Learning Center.</p>
+
+          <div class="highlight">
+            <div class="badge">NISM</div>
+            <div style="flex:1">
+              <strong>Certified Mentors</strong>
+              <div class="muted small">Emphasis on compliance, ethics and practical skills.</div>
+            </div>
+          </div>
+
+          <div class="highlight">
+            <div class="badge">Hands‑On</div>
+            <div style="flex:1">
+              <strong>Practical Setup</strong>
+              <div class="muted small">Live platform walkthroughs, order placement and demo trades.</div>
+            </div>
+          </div>
+
+          <div class="highlight">
+            <div class="badge">Outcome</div>
+            <div style="flex:1">
+              <strong>Beginner-ready</strong>
+              <div class="muted small">Clear learning path — from basics to reading charts in 3 hours.</div>
+            </div>
+          </div>
+
+          <hr style="margin:14px 0;border:none;border-top:1px solid #eef2f5">
+
+          <h3 style="margin:0 0 8px 0">Curriculum (Modules)</h3>
+          <div class="module-grid">
+            <div class="module">
+              <strong>Module 1 — Money & Basics</strong>
+              <div class="muted small">What is money, why invest, risk vs return, time value of money.</div>
+            </div>
+            <div class="module">
+              <strong>Module 2 — Indian Financial Ecosystem</strong>
+              <div class="muted small">SEBI, NSE, BSE, RBI — roles & responsibilities.</div>
+            </div>
+            <div class="module">
+              <strong>Module 3 — Stocks & IPOs</strong>
+              <div class="muted small">Shares, listings, IPO process, reading company basics.</div>
+            </div>
+            <div class="module">
+              <strong>Module 4 — Price Drivers</strong>
+              <div class="muted small">Supply & demand, news impact, market microstructure basics.</div>
+            </div>
+            <div class="module">
+              <strong>Module 5 — Accounts & Brokers</strong>
+              <div class="muted small">Demat, trading accounts, choosing brokers, brokerage basics.</div>
+            </div>
+            <div class="module">
+              <strong>Module 6 — Market Mechanics</strong>
+              <div class="muted small">Order types, session timings, settlement (T+1) lifecycle.</div>
+            </div>
+            <div class="module">
+              <strong>Module 7 — First Look at Charts</strong>
+              <div class="muted small">Intro to charts, timeframes, simple indicators and demo trades.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <div class="muted">Slot</div>
+            <div class="pill">10:00 AM – 1:00 PM</div>
+            <div class="muted">Seats</div>
+            <div class="pill">Limited — book early</div>
+          </div>
         </div>
+
+        <div style="height:14px"></div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px 0">Register / Pay</h3>
+          <p class="small muted">Secure online payment (Razorpay) or register via WhatsApp / Call.</p>
+
+          <div class="cta">
+            <a class="contact-btn whatsapp" href="https://wa.me/919346813383?text=Hello%20ExpressSpark%2C%20I%20want%20to%20register%20for%20the%20Stock%20Market%20Workshop%20on%2021%20Sep%202025" target="_blank" rel="noopener">📱 WhatsApp</a>
+            <a class="contact-btn call" href="tel:+919346813383">📞 Call</a>
+            <a class="underline" href="tel:+919346813383">+91 93468 13383</a>
+          </div>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid #eef2f5">
+
+          <!-- Razorpay payment button -->
+          <form id="razorpayForm" aria-label="Razorpay payment button">
+            <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_RIMmfRfJz3imDg" async> </script>
+          </form>
+
+          <p class="muted small" style="margin-top:8px">If the payment button doesn't appear, use WhatsApp/call and we'll process registration manually.</p>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px 0">Venue Map — ExpressSpark Learning Center</h3>
+          <iframe src="https://www.google.com/maps?q=ExpressSpark%20Learning%20Center%20Plot%20No%2083%20PN%20Colony%20Srikakulam&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <p class="muted small" style="margin-top:8px">Open in Google Maps: <a class="underline" href="https://www.google.com/maps/search/?api=1&query=ExpressSpark%20Learning%20Center%20Plot%20No%2083%20PN%20Colony%20Srikakulam" target="_blank" rel="noopener">Get directions</a></p>
+        </div>
+
       </section>
 
+      <aside>
+        <div class="card">
+          <h3 style="margin-top:0">Event Details</h3>
+          <p class="small"><strong>Date:</strong> Sunday, 21st September 2025<br>
+          <strong>Time:</strong> 10:00 AM – 1:00 PM<br>
+          <strong>Venue:</strong> ExpressSpark Learning Center, Plot No: 83, PN Colony, Srikakulam<br>
+          <strong>Fee:</strong> ₹109 (includes refreshments)</p>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid #eef2f5">
+
+          <h4 style="margin:0 0 8px 0">Trainers</h4>
+          <p class="small">Delivered by experienced industry professionals (NISM certified). Focus: compliance, practical trading setup and clear beginner outcomes.</p>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid #eef2f5">
+
+          <h4 style="margin:0 0 8px 0">Contact</h4>
+          <p class="muted small">Call/WhatsApp to register: <a href="tel:+919346813383">+91 93468 13383</a></p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="contact-btn whatsapp" href="https://wa.me/919346813383?text=I%20want%20to%20register%20for%20the%20Workshop" target="_blank">WhatsApp</a>
+            <a class="contact-btn call" href="tel:+919346813383">Call</a>
+          </div>
+        </div>
+      </aside>
     </main>
 
-    <footer>
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-        <div style="font-weight:800">ExpressSpark</div>
-        <div class="meta">© 2025 • Contact: +91 93468 13383</div>
-      </div>
-    </footer>
+    <div class="footer">By registering you agree to our <a href="#terms">terms</a>. For group bookings contact <a class="underline" href="tel:+919346813383">+91 93468 13383</a>.</div>
   </div>
 
-  <!-- Mobile sticky CTA (appears only on small screens; keeps Razorpay as primary if injected) -->
-  <div id="mobileCta" style="display:none"></div>
-
   <script>
-    /* ---------- Utils ---------- */
-    function openWhatsApp(prefill){
-      const url = 'https://wa.me/919346813383?text=' + encodeURIComponent(prefill || 'I want to register for ExpressSpark workshop on 21 Sep 2025.');
-      try { window.open(url, '_blank'); } catch(e) { location.href = url; }
-    }
-
-    /* ---------- Form submit -> WhatsApp fallback ---------- */
-    document.addEventListener('DOMContentLoaded', function(){
-      const formSubmit = document.getElementById('formSubmit');
-      const formMsg = document.getElementById('formMsg');
-
-      formSubmit.addEventListener('click', function(){
-        const name = document.getElementById('name')?.value?.trim();
-        const phone = document.getElementById('phone')?.value?.trim();
-        const note = document.getElementById('note')?.value?.trim();
-        if (!name || !phone) {
-          alert('Please fill name and phone to register via WhatsApp.');
-          return;
-        }
-        const text = Registering:%0AName:%20${encodeURIComponent(name)}%0APhone:%20${encodeURIComponent(phone)}%0ANote:%20${encodeURIComponent(note||'')}%0AAmount:%20₹109;
-        openWhatsApp(text);
-        if (formMsg) formMsg.textContent = 'Opening WhatsApp to complete registration...';
-      });
-    });
-
-    /* ---------- Razorpay presence/fallback handling ---------- */
-    // We rely on the actual Razorpay injected button as the primary enroll action.
-    // If the button is not injected within N ms, show visible fallback CTA (WhatsApp).
-    window.addEventListener('load', function(){
-      function razorpayInjected(){
-        return !!document.querySelector('.razorpay-payment-button');
-      }
-
-      // Attempt to detect for up to ~2s, then show fallback if not available
-      const timeout = 2000;
-      setTimeout(function(){
-        if (!razorpayInjected()){
-          console.info('Razorpay button not detected -> showing fallback CTAs.');
-          const fh = document.getElementById('fallbackHero');
-          const ff = document.getElementById('fallbackForm');
-          if (fh) fh.style.display = 'inline-flex';
-          if (ff) ff.style.display = 'inline-flex';
-        } else {
-          // If present, ensure accessible labeling
-          const rp = document.querySelector('.razorpay-payment-button');
-          if (rp) rp.setAttribute('aria-label', 'Enroll & pay ₹109');
-        }
-      }, timeout);
-
-      // For mobile: if Razorpay button is present, mirror a small sticky mobile CTA that points to the rendered button.
-      // Implementation: if .razorpay-payment-button is present, clone it into mobile CTA area (visible on small screens).
-      setTimeout(function(){
-        const rp = document.querySelector('.razorpay-payment-button');
-        const mobileCta = document.getElementById('mobileCta');
-        if (rp && window.innerWidth <= 520){
-          // clone the button (deep clone) and place fixed bottom
-          const clone = rp.cloneNode(true);
-          clone.style.width = 'calc(100% - 28px)';
-          clone.style.maxWidth = '600px';
-          clone.style.margin = '0 14px';
-          clone.style.display = 'inline-flex';
-          clone.style.zIndex = 60;
-          mobileCta.appendChild(clone);
-          mobileCta.style.display = 'block';
-          mobileCta.style.position = 'fixed';
-          mobileCta.style.left = 0;
-          mobileCta.style.right = 0;
-          mobileCta.style.bottom = 14;
-          mobileCta.style.zIndex = 60;
-        }
-      }, 1600);
-    });
-
-    /* ---------- Module reveal animation (staggered) ---------- */
-    (function(){
-      const container = document.getElementById('modules');
-      if (!container) return;
-      const modules = container.querySelectorAll('.module');
-      const io = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            modules.forEach((el, i) => {
-              setTimeout(()=> el.classList.add('visible'), i * 90);
-            });
-            observer.disconnect();
-          }
-        });
-      }, {threshold: 0.18});
-      io.observe(container);
-      // also reveal hero intro
-      const hero = document.getElementById('heroCard');
-      setTimeout(()=> hero.classList.add('visible'), 160);
-      // add class for hero-intro
-      hero.classList.add('visible');
-    })();
-
-    /* ---------- Robust click behavior for tel / wa links ---------- */
-    document.addEventListener('click', function(e){
-      const a = e.target.closest && e.target.closest('a');
-      if (!a) return;
-      const href = a.getAttribute('href') || '';
-      if (href.startsWith('tel:')) {
-        // allow default, and also attempt direct redirect
-        try { window.location.href = href; } catch(e) {}
-      }
-      if (href.includes('wa.me')) {
-        try { window.open(href, '_blank'); e.preventDefault(); } catch(err) {}
-      }
-    });
-
-    /* ---------- Accessibility helpers (keyboard users) ---------- */
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape') {
-        // clear any inline form message
-        const fm = document.getElementById('formMsg');
-        if (fm) fm.textContent = '';
-      }
-    });
+    // small accessibility-friendly JS: open WhatsApp call handled by links
+    // no heavy scripts; animations are CSS-only and respect prefers-reduced-motion
   </script>
 </body>
 </html>
